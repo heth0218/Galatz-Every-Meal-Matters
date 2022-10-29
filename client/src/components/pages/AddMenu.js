@@ -4,8 +4,10 @@ import { addMenuItem } from '../../actions/restaurantActions'
 import PropTypes from 'prop-types'
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { loadUser } from '../../actions/userActions'
+import { useHistory } from 'react-router-dom'
 
 const AddMenu = ({ addMenuItem, loadUser }) => {
+    let history = useHistory()
     useEffect(() => {
         loadUser()
         // eslint-disable-next-line
@@ -29,6 +31,7 @@ const AddMenu = ({ addMenuItem, loadUser }) => {
             name, cost, image, description
         }
         addMenuItem(menu);
+        history.push('/restaurant')
         M.toast({ html: ` ${name}, you have successfully been registered ` })
     }
     return (

@@ -5,13 +5,13 @@ const hasRoles = require('../middleware/roles')
 const auth = require('../middleware/auth');
 
 //Register a new restaurant
-router.post('/', async (req, res) => {
+router.post('/', auth, hasRoles(['admin']), async (req, res) => {
     const { name } = req.body;
 
     const restaurant = await Restaurant.findOne({ name });
 
     if (restaurant) {
-        return res.send(500).send({
+        return res.status(500).send({
             msg: 'The restaurant already exists'
         })
     }

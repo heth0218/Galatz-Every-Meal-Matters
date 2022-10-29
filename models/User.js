@@ -32,6 +32,10 @@ const UserSchema = mongoose.Schema({
     date: {
         type: Date,
         default: Date.now
+    }, 
+    currentTotal:{
+        type:Number, 
+        default:0
     }
 
 });

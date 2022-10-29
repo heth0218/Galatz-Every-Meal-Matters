@@ -2,12 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const CartHistItems = ({ item }) => {
-    const { name, cost, quantity } = item
+    let { cart, finalTotal} = item
+
+    cart=JSON.parse(cart)
+
+    // console.log(name)
     return (
         <div>
             <div className="column" float="left" width="50%">
-
-                <div class="col s6 m6">
+                
+                {/* <div class="col s6 m6">
                     <div class="card red lighten-5">
                         <h3>{name}</h3>
                         <div class="card-content">
@@ -16,8 +20,7 @@ const CartHistItems = ({ item }) => {
                         </div>
                     </div>
                 </div>
-                <br />
-
+                <br /> */}
             </div>
         </div>
     )

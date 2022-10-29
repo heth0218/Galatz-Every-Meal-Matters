@@ -8,14 +8,13 @@ import { loadUser } from '../../actions/userActions'
 
 const Home = ({ restaurants, getRestaurants, loadUser }) => {
     useEffect(() => {
-        getRestaurants()
+        getRestaurants();
         if (localStorage.token) { loadUser() }
         // eslint-disable-next-line
     }, [])
     return (
         <div>
             {!restaurants ? (<Preloader />) : (restaurants.map(restaurant => <RestaurantItem restaurant={restaurant} key={restaurant._id} />))}
-            <input type="text"></input>
         </div>
     )
 }

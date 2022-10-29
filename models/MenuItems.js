@@ -4,7 +4,7 @@ const Restaurant = require('./Restaurant');
 const MenuItemsSchema = mongoose.Schema({
     name: String,
     description: String,
-    cost: String,
+    cost: Number,
     availabilty: {
         type: Boolean,
         default: true

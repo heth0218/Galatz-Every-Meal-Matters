@@ -8,7 +8,8 @@ const RestaurantSchema = mongoose.Schema({
     description: String,
     email: {
         type: String,
-        required: true
+        required: true, 
+        unique:true
     },
     address: {
         type: String,

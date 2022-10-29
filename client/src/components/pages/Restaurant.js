@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom'
 
 const Restaurant = ({ getRestaurant, user, restaurant: { current, menu }, loadUser }) => {
     useEffect(() => {
-        getRestaurant()
+        getRestaurant();
         if (localStorage.token) { loadUser() }
         // eslint-disable-next-line
     }, [])

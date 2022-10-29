@@ -42,7 +42,7 @@ const MenuItems = ({ user, men, addMenu, isAuthenticated, deleteMenu }) => {
                     <div class="card-content">
                         <h6>{description}</h6>
                         <span><h7>cost :</h7><h5>{cost}$</h5></span>
-                        <h6> Quantity:<input type="text" name="quantity" value={quantity} onChange={onChange}></input></h6>
+                        <h6> Quantity:<input type="number" min='0' name="quantity" value={quantity} onChange={onChange}></input></h6>
                     </div>
                     <div>
                         {user && user.roles[0] === 'admin' && <a href="#!" className="secondary-content" onClick={deleteMen}>

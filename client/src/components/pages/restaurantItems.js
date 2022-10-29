@@ -30,8 +30,8 @@ const restaurantItems = ({ user, restaurant, setRestaurant, deleteRestaurant }) 
                         <h5 className="red-text">{name}</h5>
                         <span><i className="material-icons">email</i>&nbsp;&nbsp;Email:&nbsp;<span>{email}</span></span>
                         <br />
-                        <span><i className="material-icons">call</i> &nbsp;&nbsp;Contact:&nbsp;{contact && (contact.map(con => <span>{con}</span>))}
-                        </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        {/* <span><i className="material-icons">call</i> &nbsp;&nbsp;Contact:&nbsp;{contact && (contact.map(con => <span>{con}</span>))}
+                        </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; */}
                         <span><i className="material-icons" >star</i> &nbsp;&nbsp;Rating:&nbsp;{starRating}
                         </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         {!isAvailable ? (<label>

@@ -14,7 +14,7 @@ const CartHistory = ({ user: { user, isAuthenticated }, loadUser }) => {
   return (
     <div>
       {isAuthenticated === false ? (
-        <h1>Who are you ?</h1>
+        <h1>Who are you? Kindly Login</h1>
       ) : (
           <div>
             <h3>
@@ -25,7 +25,7 @@ const CartHistory = ({ user: { user, isAuthenticated }, loadUser }) => {
             <div>
               {user &&
                 user.cartHistory.map((cart) => (
-                  <CartHistItems item={cart} key={cart._id} />
+                  <CartHistItems item={cart}/>
                 ))}
             </div>
           </div>

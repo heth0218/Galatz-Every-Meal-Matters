@@ -1,7 +1,5 @@
 import { GET_RESTAURANTS, RESTAURANT_ERROR, GET_RESTAURANT, SET_RESTAURANT, ADD_RESTAURANT, DELETE_CART, DELETE_RESTAURANT, ADD_MENU, ADD_MENUITEM, DELETE_MENU } from './types';
 import axios from 'axios'
-import { STATES } from 'mongoose';
-
 
 export const getRestaurants = () => async dispatch => {
     try {
@@ -63,7 +61,7 @@ export const addRestaurant = (restaurant) => async dispatch => {
         console.log(rest);
         dispatch({
             type: ADD_RESTAURANT,
-            payload: restaurant
+            payload: rest.data
         })
     } catch (error) {
         dispatch({
@@ -103,7 +101,7 @@ export const addMenuItem = (menuItem) => async dispatch => {
         console.log(menu, "menu");
         dispatch({
             type: ADD_MENUITEM,
-            payload: menuItem
+            payload: menu.data
         })
 
     } catch (error) {
