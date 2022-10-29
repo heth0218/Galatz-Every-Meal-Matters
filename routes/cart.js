@@ -67,7 +67,7 @@ router.post('/', auth, async(req, res)=>{
 
 router.get('/',auth, async(req, res)=>{
     try {
-        let cart=await Cart.find({user: res.locals.user._id})
+        let cart=await Cart.find({user: res.locals.user._id}).populate('menuId')
 
         console.log(cart)
         res.status(200).send(cart)

@@ -15,9 +15,10 @@ export default (state = initialState, action) => {
                 cart: [action.payload, ...state.cart]
             }
         case GET_CART:
+
             return {
                 ...state,
-                cartItems: action.payload.cartItems
+                cartItems: action.payload
             }
         case CART_ERROR:
             return {

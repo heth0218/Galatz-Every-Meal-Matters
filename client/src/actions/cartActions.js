@@ -11,7 +11,7 @@ export const addMenu = (item) => async dispatch => {
         }
 
         const user = await axios.post('/api/cart/', item, config)
-        console.log(user, "ujeer")
+        // console.log(user, "ujeer")
         dispatch({
             type: ADD_MENU,
             payload: item
@@ -44,10 +44,9 @@ export const getCart = () => async dispatch => {
 
 export const deleteItem = (item) => async dispatch => {
     try {
-        const cart = await axios.delete('/api/cart/delete', { data: item })
+        let{_id}=item;
+        const cart = await axios.delete(`/api/cart/delete/${_id}`)
 
-        const { _id } = item
-        console.log(_id)
         dispatch({
             type: DELETE_CART,
             payload: _id

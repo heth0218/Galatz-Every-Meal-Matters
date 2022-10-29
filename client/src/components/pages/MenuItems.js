@@ -17,7 +17,9 @@ const MenuItems = ({ user, men, addMenu, isAuthenticated, deleteMenu }) => {
             M.toast({ html: 'Please login to galatz' })
         }
         else {
-            addMenu({ quantity, name, cost, _id, image })
+            addMenu({ quantity,
+            menuId:_id
+            })
             M.toast({ html: `${quantity} of ${name} added to your cart` })
         }
 

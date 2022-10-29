@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import { deleteItem } from '../../actions/cartActions'
 
 const CartItems = ({ cart, deleteItem }) => {
-    const { name, cost, quantity } = cart
+    const {_id, menuId, quantity} = cart
     const deleteIt = () => {
-        deleteItem(cart)
+        deleteItem({_id})
     }
     return (
         <div>
@@ -14,9 +14,9 @@ const CartItems = ({ cart, deleteItem }) => {
 
                 <div class="col s6 m6">
                     <div class="card red lighten-5">
-                        <h3>{name}</h3>
+                        <h3>{menuId.name}</h3>
                         <div class="card-content">
-                            <span><h5>cost:&nbsp;&nbsp;{cost}&nbsp;&nbsp;$/item</h5></span>
+                            <span><h5>cost:&nbsp;&nbsp;{menuId.cost}&nbsp;&nbsp;$/item</h5></span>
                             <h5> Quantity:&nbsp;&nbsp;{quantity}</h5>
                             <a class="waves-effect waves-light btn-large teal lighten-2" onClick={deleteIt}>Delete&nbsp;&nbsp;&nbsp;&nbsp;<i className="material-icons">delete</i></a>
                         </div>

@@ -18,7 +18,7 @@ const Cart = ({
   useEffect(() => {
     getCart()
     if (localStorage.token) {
-      loadUser()
+      loadUser();
     }
     // eslint-disable-next-line
   }, [])
@@ -43,7 +43,7 @@ const Cart = ({
           </h3>
         )}
 
-      {cartItems === null || isAuthenticated === false ? (
+      {cartItems==null || isAuthenticated === false ? (
         <Preloader />
       ) : (
           cartItems.map((cartItem) => (
@@ -51,14 +51,14 @@ const Cart = ({
           ))
         )}
 
-      <h3>Lets Add Some to the Cart</h3>
-      <a
+      {cartItems!=null&&<a
         class="waves-effect waves-light btn-large red accent-2"
         onClick={buyCarty}
       >
         Buy&nbsp;&nbsp;&nbsp;&nbsp;
         <i className="material-icons">chevron_right</i>
       </a>
+}
       <br />
       <br />
       <br />

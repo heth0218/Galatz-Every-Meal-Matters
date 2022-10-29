@@ -61,7 +61,7 @@ export const addRestaurant = (restaurant) => async dispatch => {
         console.log(rest);
         dispatch({
             type: ADD_RESTAURANT,
-            payload: rest.data
+            payload: rest.data.restaurant
         })
     } catch (error) {
         dispatch({
