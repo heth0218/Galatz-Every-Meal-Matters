@@ -10,18 +10,49 @@ const CartItems = ({ cart, deleteItem }) => {
     }
     return (
         <div>
-            <div className="column" float="left" width="50%">
+            <div className="column" float="left" width="100%">
 
-                <div class="col s6 m6">
-                    <div class="card red lighten-5">
-                        <h3>{menuId.name}</h3>
-                        <div class="card-content">
-                            <span><h5>cost:&nbsp;&nbsp;{menuId.cost}&nbsp;&nbsp;$/item</h5></span>
-                            <h5> Quantity:&nbsp;&nbsp;{quantity}</h5>
-                            <a class="waves-effect waves-light btn-large teal lighten-2" onClick={deleteIt}>Delete&nbsp;&nbsp;&nbsp;&nbsp;<i className="material-icons">delete</i></a>
+                {/* <div class="col s6 m6"> */}
+                    <div class="card  " style = {{backgroundColor:"white", borderWidth:"0.3vw", borderStyle:"solid",borderColor:"#e63143", marginTop:"2vh"}}>
+                      
+                        <div class="card-content" >
+                        <div class = "row" >
+                        <div class="col s3">
+                        <img src={menuId.image} alt="" class="responsive-img"  style = {{height:"12vh", width:"10vw"}}/>
+                        
+                            
+                                        </div>
+                        <div class="col s3">
+                        <span><h5 className = "value1" >{menuId.cost}</h5></span>
+
+                        </div>
+                        <div class="col s3" >
+                        <h5 className = "value1" style={{paddingLeft:"2vw"}}>{quantity}</h5>
+
+                        </div>
+                        <div class = "col s3">
+                        <button className="btn2 success" onClick={deleteIt}>
+      <div class = "row" style = {{paddingTop:"2vh", paddingRight:"1vw"}}  >
+      <div class="col s8" style = {{paddingTop:"2vh"}}>
+      
+      DELETE 
+      
+      </div>
+      <div class="col s4" >
+        <i className="material-icons">delete</i>
+        </div>
+      
+      
+      </div>
+      </button>
+                       
+
+                        </div>
+                        </div>
+                        <p className = "name1">{menuId.name}</p>
                         </div>
                     </div>
-                </div>
+                {/* </div> */}
                 <br />
 
             </div>
