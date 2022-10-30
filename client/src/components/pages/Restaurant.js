@@ -6,7 +6,7 @@ import Preloader from '../layout/Preloader'
 import '../../App.css'
 import MenuItems from './MenuItems'
 import { loadUser } from '../../actions/userActions'
-
+import logo from '../../../../client/src/yelp_logo.png'
 import { Link } from 'react-router-dom'
 
 const Restaurant = ({ getRestaurant, user, restaurant: { current, menu }, loadUser }) => {
@@ -16,6 +16,15 @@ const Restaurant = ({ getRestaurant, user, restaurant: { current, menu }, loadUs
         // eslint-disable-next-line
     }, [])
 
+    function validateText(str)
+    {
+        var tarea = str;
+        if (tarea.indexOf("http://") == 0 || tarea.indexOf("https://") == 0) {
+            return true
+        }
+        return false
+    }
+
     return (
 
         <div classNameName="row m10 ">
@@ -23,11 +32,17 @@ const Restaurant = ({ getRestaurant, user, restaurant: { current, menu }, loadUs
                 <div className="row">
                     <div className="col s12 m12">
                         <div className="card red lighten-5">
-                            <div className="card-image">
-                                <img src={current.image} />
+                            {current.image&&validateText(current.image)?(<div className="card-image">
+                                <img width="100%" height="400vw" src={current.image} />
                                 <span className="card-title">{current.name}</span>
                                 <span></span>
-                            </div>
+                            </div>):
+                            (<div className="card-image">
+                            <img width="100%" height="400vw" src={logo} />
+                            <span className="card-title">{current.name}</span>
+                            <span></span>
+                        </div>)
+                            }
                             <div className="card-content">
                                 <span><i className="material-icons">email</i>&nbsp;&nbsp;&nbsp;Email:&nbsp;<span>{current.email}</span></span>
 

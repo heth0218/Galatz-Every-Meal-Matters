@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { setRestaurant, deleteRestaurant } from '../../actions/restaurantActions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
+import logo from '../../../../client/src/yelp_logo.png'
 
 import M from 'materialize-css/dist/js/materialize.min.js';
 
@@ -15,16 +16,30 @@ const restaurantItems = ({ user, restaurant, setRestaurant, deleteRestaurant }) 
     }
 
     const deleteRest = () => {
+        
         deleteRestaurant(_id)
         M.toast({ html: `${name} is successfully deleted ` })
+    }
+
+    function validateText(str)
+    {
+        var tarea = str;
+        if (tarea.indexOf("http://") == 0 || tarea.indexOf("https://") == 0) {
+            return true
+        }
+        return false
     }
 
     return (
         <div className="col s12 m9">
             <div className="card horizontal  red lighten-5">
+            {image&&(validateText(image)?<div className="card-image">
+                    <img width="300vw" height="200vw" src={image} />
+                </div>:
                 <div className="card-image">
-                    <img width="200" height="200" src={image} />
-                </div>
+                    <img width="300vw" height="200vw" src={logo} />
+                </div>)
+                }
                 <div className="card-stacked">
                     <div className="card-content">
                         <h5 className="red-text">{name}</h5>

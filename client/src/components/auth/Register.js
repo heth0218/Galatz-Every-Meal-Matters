@@ -31,6 +31,9 @@ const Register = ({ isAuthenticated, registerUser }, props) => {
         e.preventDefault();
         registerUser({ name, email, password });
         M.toast({ html: `Dear ${name}, you have successfully been registered ` })
+        setTimeout(() => {
+        M.toast({html: `We request you to complete your profile by clciking on the top right corner icon` })
+        }, 5000);
     }
 
     return (
@@ -49,11 +52,11 @@ const Register = ({ isAuthenticated, registerUser }, props) => {
                 </div>
                 <div className="form-group">
                     <label htmlFor="password">Password</label>
-                    <input required minLength='6' type="text" name="password" value={password} onChange={onChange}></input>
+                    <input required minLength='6' type="password" name="password" value={password} onChange={onChange}></input>
                 </div>
                 <div className="form-group">
                     <label htmlFor="password2">Confirm Password</label>
-                    <input required minLength='6' type="text" name="password2" value={password2} onChange={onChange}></input>
+                    <input required minLength='6' type="password" name="password2" value={password2} onChange={onChange}></input>
                 </div>
                 <input type="submit" value="Register" className="btn waves-effect waves-light red btn-block" />
             </form>

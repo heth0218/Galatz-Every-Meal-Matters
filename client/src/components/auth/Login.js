@@ -34,11 +34,11 @@ const Login = ({ loginUser, isAuthenticated }) => {
             <form onSubmit={onSubmit}>
                 <div className="form-group">
                     <label htmlFor="email">Email Address</label>
-                    <input type="text" required name="email" value={email} onChange={onChange}></input>
+                    <input type="email" required name="email" value={email} onChange={onChange}></input>
                 </div>
                 <div className="form-group">
                     <label htmlFor="password">Password</label>
-                    <input type="text" name="password" required value={password} onChange={onChange}></input>
+                    <input type="password" name="password" required value={password} onChange={onChange}></input>
                 </div>
 
                 <input type="submit" value="Login" className="btn waves-effect waves-light red btn-block" />

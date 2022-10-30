@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { addMenu } from '../../actions/cartActions'
 import { deleteMenu } from '../../actions/restaurantActions'
 import M from 'materialize-css/dist/js/materialize.min.js';
+import logo from '../../../../client/src/yelp_logo.png'
 
 const MenuItems = ({ user, men, addMenu, isAuthenticated, deleteMenu }) => {
 
@@ -25,25 +26,40 @@ const MenuItems = ({ user, men, addMenu, isAuthenticated, deleteMenu }) => {
 
     }
 
+    function validateText(str)
+{
+    var tarea = str;
+    if (tarea.indexOf("http://") == 0 || tarea.indexOf("https://") == 0) {
+        // do something here
+    }
+}
+
     const deleteMen = () => {
         deleteMenu(_id)
         M.toast({ html: `Menu Item deleted` })
     }
 
-
+    function validateText(str)
+    {
+        var tarea = str;
+        if (tarea.indexOf("http://") == 0 || tarea.indexOf("https://") == 0) {
+            return true
+        }
+        return false
+    }
 
     return (
         <div className="column" float="left" width="50%">
             <div class="col s6 m6">
                 <div class="card">
                     <div class="card-image">
-                        <img width='100%' height="300vw" src={image} />
-                        <span class="card-title">{name}</span>
+                        {image&&(validateText(image)?<img width='100%' height="300vw" src={image} />:<img width='100%' height="300vw" src={logo} />)}
+                        <h4 class="card-title">{name}</h4>
                         <a class="btn-floating halfway-fab waves-effect waves-light red" onClick={addItem}><i class="material-icons">add_shopping_cart</i></a>
                     </div>
                     <div class="card-content">
-                        <h6>{description}</h6>
-                        <span><h7>cost :</h7><h5>{cost}$</h5></span>
+                        <h6>{name}</h6>
+                        <span><h5>cost :$ {cost}</h5></span>
                         <h6> Quantity:<input type="number" min='0' name="quantity" value={quantity} onChange={onChange}></input></h6>
                     </div>
                     <div>

@@ -146,7 +146,8 @@ router.get('/buy', auth, async(req,res)=>{
 
         let data={
             cart, 
-            finalTotal:user.currentTotal
+            finalTotal:user.currentTotal, 
+            date:new Date().toDateString()
         }
 
         console.log(data)
