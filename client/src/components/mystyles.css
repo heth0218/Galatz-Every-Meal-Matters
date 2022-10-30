@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Judson&family=Londrina+Outline&family=Playfair+Display+SC&family=Rosario:wght@300&family=Rozha+One&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700');
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
+@import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Dancing+Script|Great+Vibes|Josefin+Sans|Kumar+One&display=swap');
+
+
+
+
+  .navlist{
+
+    font-size: 1.2vw;
+    font-family: 'Josefin Sans', sans-serif;
+    letter-spacing: 3px;
+    line-height: 2px;
+    font-weight:200;
+    text-transform: uppercase;
+    color: white;
+    font-weight: bold;
+    text-decoration: underline;
+    text-decoration-color: white;
+    
+  }
+  
+
+  .value{
+
+    font-size:1vw;
+    font-family: 'Josefin Sans', sans-serif;
+    letter-spacing: 3px;
+    line-height: 2px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    
+  }
+
+  .name1{
+
+    font-size:2vw;
+    font-family: 'Josefin Sans', sans-serif;
+    letter-spacing: 3px;
+    line-height: 2px;
+    font-weight: bold;
+    padding-left: 0.5vw;
+    text-transform: uppercase;
+    margin-top:4vh;
+    color: #090541;
+    
+  }
+
+  .value1{
+
+    font-size: 1.5vw;
+    font-family: 'Josefin Sans', sans-serif;
+    letter-spacing: 3px;
+    line-height: 2px;
+    font-weight: bold;
+    padding-left: 0.5vw;
+    text-transform: uppercase;
+    margin-top:4vh;
+    color: #090541;
+    
+  }
+
+
+  .total{
+
+    font-size: 2.5vw;
+    font-family: 'Josefin Sans', sans-serif;
+    letter-spacing: 3px;
+    line-height: 2px;
+    font-weight:200;
+    text-transform: uppercase;
+    color: white;
+    font-weight: bold;
+        
+  }
+  .btn {
+    border: 2px solid black;
+    background-color: white;
+    color: black;
+    padding: 0.5vh 3vw;
+    height:18vh;
+    font-size:1vw;
+    width:14vw;
+    font-family: 'Josefin Sans', sans-serif;
+    letter-spacing: 3px;
+    font-weight: bolder;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  .btn2 {
+    border: 3px solid #e63143;
+    background-color: white;
+    color: black;
+    
+    width:11vw;
+    height:10vh;
+    font-size:0.9vw;
+    font-family: 'Josefin Sans', sans-serif;
+    letter-spacing: 3px;
+    line-height: 2px;
+    font-weight: bolder;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  
+  /* Green */
+  .success {
+    border-color: #e63143;
+    color: #e63143;
+  }
+  
+  .success:hover {
+    background-color: #e63143;
+    color: white;
+  }
+
+  .success2 {
+    border-color: #e63143;
+    color: #e63143;
+  }
+  
+  .success2:hover {
+    background-color: #f3ec1a;
+    color: white;
+  }
+  
+
+  
+  
+  
+  
