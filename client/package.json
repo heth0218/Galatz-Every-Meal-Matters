@@ -10,7 +10,7 @@
     "moment": "^2.27.0",
     "react": "^16.14.0",
     "react-dom": "^16.13.1",
-    "react-moment": "^0.9.7", 
+    "react-moment": "^0.9.7",
     "react-redux": "^7.2.0",
     "react-router": "^3.2.6",
     "react-router-dom": "^5.2.0",
@@ -42,5 +42,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:8020" 
+  "proxy": "http://localhost:8020"
 }

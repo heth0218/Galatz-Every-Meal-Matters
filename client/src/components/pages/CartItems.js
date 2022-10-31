@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { deleteItem } from '../../actions/cartActions'
 import logo from '../../../../client/src/yelp_logo.png'
 import { loadUser } from '../../actions/userActions';
+import "../mystyles.css";
 
 const CartItems = ({ cart,loadUser, deleteItem }) => {
     const {_id, menuId, quantity} = cart
