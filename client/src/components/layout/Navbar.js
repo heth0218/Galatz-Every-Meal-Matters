@@ -26,17 +26,17 @@ const Navbar = ({ user: { user, isAuthenticated }, logout, icon, title }) => {
                 </li>)}
 
             <li>
-                <Link to="/">Home</Link>
+                <Link to="/" className='ff'>Home</Link>
             </li>
-            <li>Hello {user && user.name}</li>
-            <li>
+            <li className='ff'>Hello {user && user.name}</li>
+            <li className='ff'>
                 <a onClick={onLogout} href='#!'>
                     <i className="fas fa-sign-out-alt"></i>
                     <span className="hide-sm">Logout</span>
                 </a>
             </li>
             <li>
-                <Link to="/updateUser"><i className="material-icons" onClick={loadUserDetail}>account_circle</i></Link>
+                <Link to="/updateUser" className='ff'><i className="material-icons" onClick={loadUserDetail}>account_circle</i></Link>
             </li>
 
 
@@ -46,13 +46,13 @@ const Navbar = ({ user: { user, isAuthenticated }, logout, icon, title }) => {
     const guestLinks = (
         <Fragment>
             <li>
-                <h5><Link to="/">Home</Link></h5>
+                <h5 className='ff'><Link to="/">Home</Link></h5>
             </li>
             <li>
-                <h5><Link to="/register">Register</Link></h5>
+                <h5 className='ff'><Link to="/register">Register</Link></h5>
             </li>
             <li>
-                <h5> <Link to="/login">Login</Link></h5>
+                <h5 className='ff'> <Link to="/login">Login</Link></h5>
             </li>
         </Fragment>
     )
@@ -60,7 +60,7 @@ const Navbar = ({ user: { user, isAuthenticated }, logout, icon, title }) => {
 
     return (
         <div className="navbar bg-danger" >
-            <h4>
+            <h4 className='logo'>
                 <i className={icon}></i> {title}
             </h4>
             <ul>

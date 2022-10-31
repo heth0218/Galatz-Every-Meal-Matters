@@ -2,12 +2,26 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux';
 import { deleteItem } from '../../actions/cartActions'
+import logo from '../../../../client/src/yelp_logo.png'
+import { loadUser } from '../../actions/userActions';
 
-const CartItems = ({ cart, deleteItem }) => {
+const CartItems = ({ cart,loadUser, deleteItem }) => {
     const {_id, menuId, quantity} = cart
     const deleteIt = () => {
+        loadUser();
+
         deleteItem({_id})
     }
+
+    function validateText(str)
+    {
+        var tarea = str;
+        if (tarea.indexOf("http://") == 0 || tarea.indexOf("https://") == 0) {
+            return true
+        }
+        return false
+    }
+
     return (
         <div>
             <div className="column" float="left" width="100%">
@@ -18,7 +32,8 @@ const CartItems = ({ cart, deleteItem }) => {
                         <div class="card-content" >
                         <div class = "row" >
                         <div class="col s3">
-                        <img src={menuId.image} alt="" class="responsive-img"  style = {{height:"12vh", width:"10vw"}}/>
+                        {menuId.image&&(validateText(menuId.image)?<img src={menuId.image} alt="" class="responsive-img"  style = {{height:"12vh", width:"10vw"}}/>:
+                        <img src={logo} alt="" class="responsive-img"  style = {{height:"12vh", width:"10vw"}}/>)}
                         
                             
                                         </div>
@@ -65,4 +80,4 @@ CartItems.propTypes = {
     deleteItem: PropTypes.func.isRequired,
 }
 
-export default connect(null, { deleteItem })(CartItems)
+export default connect(null, { deleteItem, loadUser })(CartItems)

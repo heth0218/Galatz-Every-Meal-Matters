@@ -54,16 +54,16 @@ const MenuItems = ({ user, men, addMenu, isAuthenticated, deleteMenu }) => {
                 <div class="card">
                     <div class="card-image">
                         {image&&(validateText(image)?<img width='100%' height="300vw" src={image} />:<img width='100%' height="300vw" src={logo} />)}
-                        <h4 class="card-title">{name}</h4>
+                        <h4 class="card-title logo">{name}</h4>
                         <a class="btn-floating halfway-fab waves-effect waves-light red" onClick={addItem}><i class="material-icons">add_shopping_cart</i></a>
                     </div>
-                    <div class="card-content">
-                        <h6>{name}</h6>
+                    <div class="card-content ff">
+                        <h5>{description}</h5>
                         <span><h5>cost :$ {cost}</h5></span>
                         <h6> Quantity:<input type="number" min='0' name="quantity" value={quantity} onChange={onChange}></input></h6>
                     </div>
                     <div>
-                        {user && user.roles[0] === 'admin' && <a href="#!" className="secondary-content" onClick={deleteMen}>
+                        {user && user.roles[0] === 'admin' && <a href="#!" className="secondary-content ff" onClick={deleteMen}>
                             Delete:&nbsp;&nbsp;&nbsp;&nbsp; <i className="material-icons red-text">delete</i>
                         </a>}
                     </div>

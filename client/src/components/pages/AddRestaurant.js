@@ -38,38 +38,38 @@ const AddRestaurant = ({ addRestaurant, loadUser }) => {
     return (
         <div className="form-container">
             <h2>
-                <span className="red-text">Add Restaurant</span>
+                <span className="red-text logo">Add Restaurant</span>
             </h2>
             <form onSubmit={onSubmit}>
-                <div className="form-group">
+                <div className="form-group ff">
                     <label htmlFor="name">Name</label>
                     <input type="text" name="name" value={name} onChange={onChange}></input>
                 </div>
-                <div className="form-group">
+                <div className="form-group ff">
                     <label htmlFor="contact">Contact</label>
                     <input type="text" name="contact" value={contact} onChange={onChange}></input>
                 </div>
-                <div className="form-group">
+                <div className="form-group ff">
                     <label htmlFor="email">Email Address</label>
                     <input type="text" name="email" value={email} onChange={onChange}></input>
                 </div>
-                <div className="form-group">
+                <div className="form-group ff">
                     <label htmlFor="address">Address</label>
                     <input type="text" name="address" value={address} onChange={onChange}></input>
                 </div>
-                <div className="form-group">
+                <div className="form-group ff">
                     <label htmlFor="image">Image</label>
                     <input type="text" name="image" value={image} onChange={onChange}></input>
                 </div>
-                <div className="form-group">
+                <div className="form-group ff">
                     <label htmlFor="starRating">Star rating</label>
                     <input type="text" name="starRating" value={starRating} onChange={onChange}></input>
                 </div>
-                <div className="form-group">
+                <div className="form-group ff">
                     <label htmlFor="description">Description</label>
                     <input type="text" name="description" value={description} onChange={onChange}></input>
                 </div>
-                <div className="form-group">
+                <div className="form-group ff">
                     <label htmlFor="type">Type</label>
                     <input type="text" name="type" value={type} onChange={onChange}></input>
                 </div>

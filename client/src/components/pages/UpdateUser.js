@@ -61,22 +61,22 @@ const UpdateUser = ({ current, updateUser, loadUser }) => {
             {current && name && (
                 < div className="form-container" >
                     <h2>
-                        <span className="red-text">Update Your Details</span>
+                        <span className="red-text logo">Update Your Details</span>
                     </h2>
                     <form onSubmit={onSubmit}>
-                        <div className="form-group">
+                        <div className="form-group ff">
                             <label htmlFor="name">Name</label>
                             <input type="text" name="name" value={name} onChange={onChange}></input>
                         </div>
-                        <div className="form-group">
+                        <div className="form-group ff">
                             <label htmlFor="contact">Contact</label>
                             <input type="text" name="contact" value={contact} onChange={onChange}></input>
                         </div>
-                        <div className="form-group">
+                        <div className="form-group ff">
                             <label htmlFor="email">Email Address</label>
                             <input type="text" name="email" value={email} onChange={onChange}></input>
                         </div>
-                        <div className="form-group">
+                        <div className="form-group ff">
                             <label htmlFor="address">Address</label>
                             <input type="text" name="address" value={address} onChange={onChange}></input>
                         </div>

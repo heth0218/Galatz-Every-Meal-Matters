@@ -1,4 +1,4 @@
-import { ADD_MENU, CART_ERROR, GET_CART, DELETE_CART, BUY_CART } from './types'
+import { ADD_MENU, CART_ERROR, GET_CART, DELETE_CART, BUY_CART, GET_USER } from './types'
 import axios from 'axios'
 
 
@@ -9,12 +9,14 @@ export const addMenu = (item) => async dispatch => {
                 'Content-Type': 'application/json'
             }
         }
-
-        const user = await axios.post('/api/cart/', item, config)
+       
+        const x = await axios.post('/api/cart/', item, config)
         // console.log(user, "ujeer")
+
+
         dispatch({
             type: ADD_MENU,
-            payload: item
+            payload: x.data
         })
 
     } catch (error) {
@@ -47,6 +49,13 @@ export const deleteItem = (item) => async dispatch => {
         let{_id}=item;
         const cart = await axios.delete(`/api/cart/delete/${_id}`)
 
+        const res = await axios.get('/api/users/');
+        console.log(res.data)
+        dispatch({
+            type: GET_USER,
+            payload: res.data
+        })
+
         dispatch({
             type: DELETE_CART,
             payload: _id
@@ -63,6 +72,14 @@ export const buyCart = () => async dispatch => {
     try {
         const buy = await axios.get('/api/cart/buy');
         console.log(buy);
+
+        const res = await axios.get('/api/users/');
+        console.log(res.data)
+        dispatch({
+            type: GET_USER,
+            payload: res.data
+        })
+
         dispatch({
             type: BUY_CART,
             payload: buy

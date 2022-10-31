@@ -21,7 +21,32 @@
     
   }
   
+  .navlist1{
 
+    font-size: 1.2vw;
+    font-family: 'Josefin Sans', sans-serif;
+    letter-spacing: 3px;
+    line-height: 2px;
+    font-weight:200;
+    text-transform: uppercase;
+    color: white;
+    font-weight: bold;
+    /* text-decoration: underline; */
+    text-decoration-color: white;
+    
+  }
+
+  .ff{
+    font-size: 1.2vw;
+    font-family: 'Josefin Sans', sans-serif;
+
+  }
+
+  .logo{
+    font-size: 2.5vw;
+    font-family: 'Josefin Sans', sans-serif;
+
+  }
   .value{
 
     font-size:1vw;
@@ -48,6 +73,20 @@
     
   }
 
+
+  .name2{
+
+    font-size:0.85vw;
+    font-family: 'Josefin Sans', sans-serif;
+    letter-spacing: 3px;
+    line-height: 2px;
+    font-weight: bold;
+    padding-left: 0.5vw;
+    text-transform: uppercase;
+    margin-top:4vh;
+    color: #090541;
+    
+  }
   .value1{
 
     font-size: 1.5vw;
@@ -62,6 +101,19 @@
     
   }
 
+  .value2{
+
+    font-size: 0.75vw;
+    font-family: 'Josefin Sans', sans-serif;
+    letter-spacing: 3px;
+    line-height: 2px;
+    font-weight: bold;
+    padding-left: 0.5vw;
+    text-transform: uppercase;
+    margin-top:4vh;
+    color: #090541;
+    
+  }
 
   .total{
 
@@ -75,7 +127,7 @@
     font-weight: bold;
         
   }
-  .btn {
+  .btn3 {
     border: 2px solid black;
     background-color: white;
     color: black;

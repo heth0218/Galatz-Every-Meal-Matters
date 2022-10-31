@@ -7,6 +7,8 @@ import Preloader from "../layout/Preloader"
 import CartItems from "./CartItems"
 import M from "materialize-css/dist/js/materialize.min.js"
 import "../mystyles.css";
+import { useHistory } from 'react-router-dom'
+
 const Cart = ({
   cartItems,
   getCart,
@@ -15,6 +17,9 @@ const Cart = ({
   buyCart,
   loadUser,
 }) => {
+
+  let history = useHistory();
+
   useEffect(() => {
     getCart()
     if (localStorage.token) {
@@ -25,7 +30,13 @@ const Cart = ({
 
   const buyCarty = () => {
     buyCart()
+  
     M.toast({ html: `You have successfully bought the Cart Items` })
+  }
+
+
+  let gotoHome=()=>{
+    history.push('/')
   }
 
   return (
@@ -88,7 +99,7 @@ const Cart = ({
            </div>
           ))
         )}
-      {user == null ? "" : 
+      {user&&(user == null ? "" : 
             <div class = "row"  >
             <div class="col s4" style = {{paddingTop:"2vh"}} >
       <p className = "value">Cart </p><br />
@@ -97,11 +108,11 @@ const Cart = ({
       <div class="col s8" >
       <h3 className = "total">{user.currentTotal}</h3>
       </div>
-      </div>
+      </div>)
       }
       <br />
-      {cartItems!=null&&
-      <button className="btn success2" onClick={buyCarty}>
+      {cartItems&&cartItems.length!=0&&
+      <button className="btn3 success2" onClick={buyCarty}>
       <div class = "row" style = {{paddingTop:"30%"}}  >
       <div class="col s10" >
       
@@ -120,7 +131,7 @@ const Cart = ({
      
       <br />
       <br />
-      <button className="btn success2" >
+      <button className="btn3 success2" onClick={gotoHome} >
       <div class = "row" style = {{paddingTop:"30%"}}  >
       <div class="col s10" >
       

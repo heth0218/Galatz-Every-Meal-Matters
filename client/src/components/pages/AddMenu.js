@@ -37,22 +37,22 @@ const AddMenu = ({ addMenuItem, loadUser }) => {
     return (
         <div className="form-container">
             <h2>
-                <span className="red-text">Add Menu Item</span>
+                <span className="red-text logo">Add Menu Item</span>
             </h2>
             <form onSubmit={onSubmit}>
-                <div className="form-group">
+                <div className="form-group ff">
                     <label htmlFor="name">Name</label>
                     <input type="text" name="name" value={name} onChange={onChange}></input>
                 </div>
-                <div className="form-group">
+                <div className="form-group ff">
                     <label htmlFor="cost">Cost</label>
                     <input type="text" name="cost" value={cost} onChange={onChange}></input>
                 </div>
-                <div className="form-group">
+                <div className="form-group ff">
                     <label htmlFor="image">Image</label>
                     <input type="text" name="image" value={image} onChange={onChange}></input>
                 </div>
-                <div className="form-group">
+                <div className="form-group ff">
                     <label htmlFor="description">Description</label>
                     <input type="text" name="description" value={description} onChange={onChange}></input>
                 </div>

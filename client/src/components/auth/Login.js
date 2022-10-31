@@ -29,19 +29,19 @@ const Login = ({ loginUser, isAuthenticated }) => {
     return (
         <div className="form-container">
             <h1>
-                <span className="red-text">Account Login</span>
+                <span className="red-text logo">Account Login</span>
             </h1>
             <form onSubmit={onSubmit}>
-                <div className="form-group">
+                <div className="form-group ff">
                     <label htmlFor="email">Email Address</label>
                     <input type="email" required name="email" value={email} onChange={onChange}></input>
                 </div>
-                <div className="form-group">
+                <div className="form-group ff">
                     <label htmlFor="password">Password</label>
                     <input type="password" name="password" required value={password} onChange={onChange}></input>
                 </div>
 
-                <input type="submit" value="Login" className="btn waves-effect waves-light red btn-block" />
+                <input type="submit" value="Login" className="btn waves-effect waves-light red btn-block ff" />
             </form>
         </div>
     )

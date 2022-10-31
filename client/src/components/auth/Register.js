@@ -32,33 +32,33 @@ const Register = ({ isAuthenticated, registerUser }, props) => {
         registerUser({ name, email, password });
         M.toast({ html: `Dear ${name}, you have successfully been registered ` })
         setTimeout(() => {
-        M.toast({html: `We request you to complete your profile by clciking on the top right corner icon` })
+        M.toast({html: `We request you to complete your profile by clicking on the top right corner icon` })
         }, 5000);
     }
 
     return (
         <div className="form-container">
             <h2>
-                <span className="red-text">Account Register</span>
+                <span className="red-text logo">Account Register</span>
             </h2>
             <form onSubmit={onSubmit}>
-                <div className="form-group">
+                <div className="form-group ff">
                     <label htmlFor="name">Name</label>
                     <input type="text" name="name" value={name} onChange={onChange}></input>
                 </div>
-                <div className="form-group">
+                <div className="form-group ff">
                     <label htmlFor="email">Email Address</label>
                     <input type="text" name="email" value={email} onChange={onChange}></input>
                 </div>
-                <div className="form-group">
+                <div className="form-group ff">
                     <label htmlFor="password">Password</label>
                     <input required minLength='6' type="password" name="password" value={password} onChange={onChange}></input>
                 </div>
-                <div className="form-group">
+                <div className="form-group ff">
                     <label htmlFor="password2">Confirm Password</label>
                     <input required minLength='6' type="password" name="password2" value={password2} onChange={onChange}></input>
                 </div>
-                <input type="submit" value="Register" className="btn waves-effect waves-light red btn-block" />
+                <input type="submit" value="Register" className="btn ff waves-effect waves-light red btn-block" />
             </form>
 
         </div >
