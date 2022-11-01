@@ -17,7 +17,7 @@ app.use('/api/restaurant', require('./routes/restaurant'));
 app.use('/api/menu', require('./routes/menu'));
 app.use('/api/cart', require('./routes/cart'));
 
-const PORT = process.env.PORT || 8020;
+const PORT = 8020;
 
 app.listen(PORT, () => {
     console.log(`Listening to post ${PORT}`)

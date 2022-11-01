@@ -106,7 +106,7 @@ const Cart = ({
       <p className = "value">Total: </p>
       </div>
       <div class="col s8" >
-      <h3 className = "total">{user.currentTotal}</h3>
+      <h3 className = "total">$ {user.currentTotal}</h3>
       </div>
       </div>)
       }

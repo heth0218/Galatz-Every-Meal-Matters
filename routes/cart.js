@@ -141,7 +141,7 @@ router.get('/buy', auth, async(req,res)=>{
         let user=await User.findById(res.locals.user._id);
 
         cart=JSON.stringify(cart);
-        console.log(cart)
+        // console.log(cart)
 
 
         let data={

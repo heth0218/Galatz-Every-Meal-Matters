@@ -18,10 +18,14 @@ const MenuItems = ({ user, men, addMenu, isAuthenticated, deleteMenu }) => {
             M.toast({ html: 'Please login to galatz' })
         }
         else {
-            addMenu({ quantity,
-            menuId:_id
-            })
-            M.toast({ html: `${quantity} of ${name} added to your cart` })
+            if(quantity>0)
+            {
+                addMenu({ quantity,
+                    menuId:_id
+                    })
+                    M.toast({ html: `${quantity} of ${name} added to your cart` })
+            }
+            else M.toast({html: `Kindly add quantity greater than 0 into the cart` })
         }
 
     }
