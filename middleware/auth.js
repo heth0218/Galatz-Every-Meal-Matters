@@ -1,7 +1,8 @@
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const User = require('../models/User');
-
+var connection = require('../database.js')
+const util = require('util');
 
 module.exports = async (req, res, next) => {
     //Get the token from the header
@@ -15,8 +16,15 @@ module.exports = async (req, res, next) => {
     }
 
     const decoded = jwt.verify(token, config.get('jwtSecret'))
-    const user = await User.findById(decoded.user.id)
-    res.locals.user = user
+    // console.log("d",decoded);
+    const query = util.promisify(connection.query).bind(connection);
+
+    const user = await query("SELECT * FROM user WHERE userId = '" + decoded.user.id + "'")
+    // console.log("decoded.user.id")
+    // console.log(user)
+    //const user = await User.findById(decoded.user.id)
+    console.log(user);
+    res.locals.user = user[0]
     next();
 
     // } catch (err) {

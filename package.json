@@ -1,10 +1,9 @@
 {
   "name": "galatz",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "nodemon server.js",
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
     "clientinstall": "npm install --prefix client",
@@ -14,19 +13,29 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^5.0.0",
+    "@hapi/joi": "^17.1.1",
     "bcryptjs": "^2.4.3",
     "concurrently": "^5.2.0",
     "config": "^3.3.1",
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "express-validator": "^6.6.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.21",
-    "nodemon": "^2.0.4",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.20",
     "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
     "@shelf/jest-mongodb": "^1.2.3",
     "supertest": "^5.0.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heth0218/Galatz-Every-Meal-Matters.git"
+  },
+  "bugs": {
+    "url": "https://github.com/heth0218/Galatz-Every-Meal-Matters/issues"
+  },
+  "homepage": "https://github.com/heth0218/Galatz-Every-Meal-Matters#readme",
+  "description": ""
 }
