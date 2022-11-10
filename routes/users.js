@@ -5,10 +5,11 @@ const util = require('util');
 const { check, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const config = require('config');
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken') 
 const auth = require('../middleware/auth');
 const hasRoles = require('../middleware/roles')
-var connection = require('../database.js')
+var connection = require('../database.js');
+const e = require('express');
 
 
 //Register a User
@@ -184,41 +185,33 @@ router.post('/login', [
 //Update user
 router.put('/:id', auth, async (req, res) => {
     try {
-
-        //Change the updation query using UPDATE method in sql 
-        // console.log()
-        //practice
-        // con.connect(function(err) {
-        //     if (err) throw err;
-        //     var sql = "UPDATE customers SET address = 'Canyon 123' WHERE address = 'Valley 345'";
-        //     con.query(sql, function (err, result) {
-        //       if (err) throw err;
-        //       console.log(result.affectedRows + " record(s) updated");
-        //     });
-        //   });
-
-
-        // const sql = await query( await "SELECT * FROM user WHERE email = '" + email + "'")
-        // console.log("results from: ",sql);
-        //practice ends
-        console.log("req: ",req)
-        console.log("req.params.id: ",req.params.id)
-        const user = await User.findByIdAndUpdate(
-            req.params.id,
-            { $set: req.body },
-            { new: true })
-
-        const user1 = await User.findById(req.params.id)
-
-        res.status(201).send(user1)
+        const query = util.promisify(connection.query).bind(connection);
+        let userSql = await query("SELECT * FROM user WHERE userId = '" + req.params.id + "'")
+        if (userSql.length==0) {
+            return res.status(400).json({
+                msg: 'User not found'
+            })
+        }
+        else {
+            var id= req.params.id;
+            var updateData=req.body;
+            var sql = `UPDATE user SET ? WHERE userId= ?`;
+            connection.query(sql, [updateData, id], function (err, data) {
+            if (err) throw err;
+            console.log(data.affectedRows + " record(s) updated");
+            res.status(201).send("user updated")
+        });
+        }
+        let user1 = await query("SELECT * FROM user WHERE userId = '" + req.params.id + "'")
+        console.log("user1 : ",user1)
+        // const user1 = await User.findById(req.params.id)
+        
     } catch (error) {
         console.log(error.message);
         res.status(500).send({
             msg: 'Server Error'
         })
     }
-
-
 })
 
 //Delete the existing user

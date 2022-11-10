@@ -119,24 +119,75 @@ router.get('/:id', async (req, res) => {
 })
 
 //Update a detail of a restaurant 
-router.put('/:id', auth, hasRoles(['admin']), async (req, res) => {
 
-    const restaurant = await Restaurant.findById(req.params.id);
-
-    if (!restaurant) {
-        return res.status(400).send({
-            msg: "The restaurant not found"
+router.put('/:id', auth, async (req, res) => {
+    try {
+        const query = util.promisify(connection.query).bind(connection);
+        let userSql = await query("SELECT * FROM restaurant WHERE restaurantId = '" + req.params.id + "'")
+        if (userSql.length==0) {
+            return res.status(400).json({
+                msg: "The restaurant not found"
+            })
+        }
+        else {
+            var id= req.params.id;
+            var updateData=req.body;
+            var sql = `UPDATE restaurant SET ? WHERE restaurantId= ?`;
+            connection.query(sql, [updateData, id], function (err, data) {
+            if (err) throw err;
+            console.log(data.affectedRows + " record(s) updated");
+            res.status(201).send("restaurant updated")
+        });
+        }
+        let user1 = await query("SELECT * FROM restaurant WHERE restaurantId = '" + req.params.id + "'")
+        console.log("user1 : ",user1)
+        // const user1 = await User.findById(req.params.id)
+        
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).send({
+            msg: 'Server Error'
         })
     }
-
-    const hell = await Restaurant.findByIdAndUpdate(
-        req.params.id,
-        { $set: req.body },
-        { new: true })
-
-    res.json(hell)
-
 })
+
+// router.put('/:id', auth, async (req, res) => {
+
+//     const restaurant = await Restaurant.findById(req.params.id);
+
+//     if (!restaurant) {
+//         return res.status(400).send({
+//             msg: "The restaurant not found"
+//         })
+//     }
+
+//     const hell = await Restaurant.findByIdAndUpdate(
+//         req.params.id,
+//         { $set: req.body },
+//         { new: true })
+
+//     res.json(hell)
+
+// })
+
+// router.put('/:id', auth, hasRoles(['admin']), async (req, res) => {
+
+//     const restaurant = await Restaurant.findById(req.params.id);
+
+//     if (!restaurant) {
+//         return res.status(400).send({
+//             msg: "The restaurant not found"
+//         })
+//     }
+
+//     const hell = await Restaurant.findByIdAndUpdate(
+//         req.params.id,
+//         { $set: req.body },
+//         { new: true })
+
+//     res.json(hell)
+
+// })
 
 //search - done
 router.get('/search/:search',async(req,res)=>{
