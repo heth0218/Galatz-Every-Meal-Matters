@@ -244,7 +244,7 @@ router.delete('/delete', auth, hasRoles(['heth']), async (req, res) => {
 router.get('/', auth, async (req, res) => {
     try {
         const query = util.promisify(connection.query).bind(connection);
-        console.log(res.locals.user)
+        console.log("res.locals.user: ",res.locals.user)
         const user = await query("SELECT userId, name, email, date, contact, address, currentTotal, roles FROM user WHERE userId = '" + res.locals.user.userId + "'")
         //const user = await User.findById(res.locals.user.userId).select('-password')
         res.json(user);

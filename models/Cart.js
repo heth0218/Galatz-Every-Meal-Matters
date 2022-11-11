@@ -13,5 +13,4 @@ const CartItemSchema = mongoose.Schema({
     },
     quantity:Number
 })
-
 module.exports = mongoose.model('cartItems', CartItemSchema)
