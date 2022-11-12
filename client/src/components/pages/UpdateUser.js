@@ -44,13 +44,13 @@ const UpdateUser = ({ current, updateUser, loadUser }) => {
 
     }, [])
 
-    const { _id, name, email, contact, address, password } = user;
+    const { userId, name, email, contact, address, password } = user;
 
     const onChange = e => setUser({ ...user, [e.target.name]: e.target.value })
 
     const onSubmit = e => {
         e.preventDefault();
-        updateUser({ _id, name, email, contact, address, password });
+        updateUser({ userId, name, email, contact, address, password });
         M.toast({ html: 'Your information is updated successfully' });
         history.push('/')
     }

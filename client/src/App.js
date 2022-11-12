@@ -17,6 +17,7 @@ import CartHistory from './components/pages/CartHistory';
 import AddRestaurant from './components/pages/AddRestaurant';
 import AddMenu from './components/pages/AddMenu';
 import UpdateUser from './components/pages/UpdateUser';
+import ShowSales from './components/pages/ShowSales';
 import PrivateRoute from './components/routing/PrivateRoute';
 
 if (localStorage.token) {
@@ -46,6 +47,7 @@ const App = () => {
                 <Route exact path='/addRestaurant' component={AddRestaurant} />
                 <Route exact path='/addMenu' component={AddMenu} />
                 <Route exact path='/updateUser' component={UpdateUser} />
+                <Route exact path='/showSales' component={ShowSales} />
               </Switch>
             </div>
             <div className='container'>

@@ -20,14 +20,19 @@ const Navbar = ({ user: { user, isAuthenticated }, logout, icon, title }) => {
     const authLinks = (
         <Fragment>
 
-            {user && user.roles[0] !== 'admin' ? (<h1></h1>) : (
+            {user &&user.roles!==null&& user.roles!== 'admin' ? (<h1></h1>) : (
+                <>
+                <li>
+                    <Link to="/showSales"><i className="material-icons">insert_chart</i></Link>
+                </li>
                 <li>
                     <Link to="/addRestaurant"><i className="material-icons">add</i></Link>
-                </li>)}
+                </li>
+                </>)}
 
-            <li>
+            {/* <li>
                 <Link to="/" className='ff'>Home</Link>
-            </li>
+            </li> */}
             <li className='ff'>Hello {user && user.name}</li>
             <li className='ff'>
                 <a onClick={onLogout} href='#!'>
@@ -45,9 +50,9 @@ const Navbar = ({ user: { user, isAuthenticated }, logout, icon, title }) => {
 
     const guestLinks = (
         <Fragment>
-            <li>
+            {/* <li>
                 <h5 className='ff'><Link to="/">Home</Link></h5>
-            </li>
+            </li> */}
             <li>
                 <h5 className='ff'><Link to="/register">Register</Link></h5>
             </li>
@@ -59,10 +64,11 @@ const Navbar = ({ user: { user, isAuthenticated }, logout, icon, title }) => {
 
 
     return (
-        <div className="navbar bg-danger" >
-            <h4 className='logo'>
+        <div className="navbar bg-danger red" >
+            <Link to='/'><h4 className='logo'>
                 <i className={icon}></i> {title}
             </h4>
+            </Link>
             <ul>
                 {isAuthenticated ? authLinks : guestLinks}
             </ul>

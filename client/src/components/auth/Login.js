@@ -23,6 +23,7 @@ const Login = ({ loginUser, isAuthenticated }) => {
 
     const onSubmit = e => {
         e.preventDefault()
+        console.log(email, password)
         loginUser({ email, password })
     }
 

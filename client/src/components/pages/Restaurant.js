@@ -13,6 +13,7 @@ import { Link } from 'react-router-dom'
 const Restaurant = ({ getRestaurant, user, restaurant: { current, menu }, loadUser }) => {
     useEffect(() => {
         getRestaurant();
+        console.log(current, menu);
         if (localStorage.token) { loadUser() }
         // eslint-disable-next-line
     }, [])
@@ -33,40 +34,40 @@ const Restaurant = ({ getRestaurant, user, restaurant: { current, menu }, loadUs
                 <div className="row">
                     <div className="col s12 m12">
                         <div className="card red lighten-5">
-                            {current.image&&validateText(current.image)?(<div className="card-image">
-                                <img style={{height:"70vh", width:"100%"}} src={current.image} />
-                                <span className="card-title logo">{current.name}</span>
+                            {current[0].image&&validateText(current[0].image)?(<div className="card-image">
+                                <img style={{height:"70vh", width:"100%"}} src={current[0].image} />
+                                <span className="card-title logo" style={{color: "black"}}>{current[0].name}</span>
                                 <span></span>
                             </div>):
                             (<div className="card-image value1">
                             <img width="100%" height="400vw" src={logo} />
-                            <span className="card-title logo">{current.name}</span>
+                            <span className="card-title logo">{current[0].name}</span>
                             <span></span>
                         </div>)
                             }
                             <div className="card-content">
-                                <span className='ff'><i className="material-icons">email</i>&nbsp;&nbsp;&nbsp;Email:&nbsp;<span>{current.email}</span></span>
+                                <span className='ff'><i className="material-icons">email</i>&nbsp;&nbsp;&nbsp;Email:&nbsp;<span>{current[0].email}</span></span>
 
                                 <br />
-                                <span className='ff'><i className="material-icons">call</i> &nbsp;&nbsp;&nbsp;Contact:&nbsp;{current.contact && (current.contact.map(con => <span>{con}</span>))}
-                                </span>
+                                {/* <span className='ff'><i className="material-icons">call</i> &nbsp;&nbsp;&nbsp;Contact:&nbsp;{current[0].contact && (current[0].contact.map(con => <span>{con}</span>))}
+                                </span> */}
                                 <br />
-                                <span className='ff'><i className="material-icons">location_on</i>&nbsp;&nbsp;&nbsp;<span>{current.address}</span></span>
+                                <span className='ff'><i className="material-icons">location_on</i>&nbsp;&nbsp;&nbsp;<span>{current[0].address}</span></span>
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                {!current.isAvailable ? (<span><span> <a class="ff btn-floating btn-small waves-effect waves-light red"></a>&nbsp;&nbsp;&nbsp;</span><span>Sorry, We are unavailable</span></span>) : (<span> <a class="ff btn-floating btn-small waves-effect green accent-3"></a>&nbsp;&nbsp;&nbsp;<span></span><span className='ff'>We are available at your service</span></span>)}
+                                {!current[0].isAvailable ? (<span><span> <a class="ff btn-floating btn-small waves-effect waves-light red"></a>&nbsp;&nbsp;&nbsp;</span><span>Sorry, We are unavailable</span></span>) : (<span> <a class="ff btn-floating btn-small waves-effect green accent-3"></a>&nbsp;&nbsp;&nbsp;<span></span><span className='ff'>We are available at your service</span></span>)}
                                 <br />
-                                <span className='ff'><i className="material-icons" >star</i> &nbsp;&nbsp;Rating:&nbsp;{current.starRating}
+                                <span className='ff'><i className="material-icons" >star</i> &nbsp;&nbsp;Rating:&nbsp;{current[0].starRating}
                                 </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 
-                                <h3 className="red-text italic ff">{current.description}</h3>
+                                <h3 className="red-text italic ff">{current[0].description}</h3>
                             </div>
                         </div>
                     </div>
-                    {user && user.roles[0] === 'admin' && <h6 className='ff'>Add Menu Item&nbsp;&nbsp;&nbsp;&nbsp;<Link to="/addMenu"><i className="material-icons">add</i></Link></h6>
+                    {user && user.roles === 'admin' && <h6 className='ff'>Add Menu Item&nbsp;&nbsp;&nbsp;&nbsp;<Link to="/addMenu"><i className="material-icons">add</i></Link></h6>
                     }
                     <div class="row">
-                        {menu.map(men => <MenuItems men={men} key={men._id} />)}
+                        {menu.map(men => <MenuItems men={men} key={men.menuItemsId} />)}
                     </div>
                 </div>
             )

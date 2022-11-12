@@ -15,22 +15,28 @@ const Cart = ({
   user,
   isAuthenticated,
   buyCart,
+  total,
   loadUser,
 }) => {
 
   let history = useHistory();
+  let [bul,setBul]=React.useState(false);
 
   useEffect(() => {
+    setBul(true);
     getCart()
+    setBul(false)
     if (localStorage.token) {
       loadUser();
     }
+
     // eslint-disable-next-line
   }, [])
 
-  const buyCarty = () => {
-    buyCart()
-  
+  const buyCarty = async() => {
+    setBul(true)
+   buyCart()
+  setBul(false)
     M.toast({ html: `You have successfully bought the Cart Items` })
   }
 
@@ -75,11 +81,11 @@ const Cart = ({
       Delete
       </div>
 </div>
-      {cartItems==null || isAuthenticated === false ? (
+      {bul||cartItems===null|| isAuthenticated === false ? (
         <Preloader />
       ) : (
           cartItems.map((cartItem) => (
-            <CartItems cart={cartItem} key={cartItem._id} />
+            <CartItems cart={cartItem} key={cartItem.cartId} />
           ))
         )}
        
@@ -105,9 +111,11 @@ const Cart = ({
       <p className = "value">Cart </p><br />
       <p className = "value">Total: </p>
       </div>
-      <div class="col s8" >
-      <h3 className = "total">$ {user.currentTotal}</h3>
-      </div>
+      {
+        
+        <div class="col s8" >
+      <h3 className = "total">$ {total}</h3>
+      </div>}
       </div>)
       }
       <br />
@@ -178,6 +186,7 @@ Cart.propTypes = {
 
 const mapStateToProps = (state) => ({
   cartItems: state.cart.cartItems,
+  total:state.cart.total,
   isAuthenticated: state.user.isAuthenticated,
   user: state.user.user,
 })

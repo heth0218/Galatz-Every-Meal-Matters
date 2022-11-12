@@ -7,11 +7,11 @@ import { loadUser } from '../../actions/userActions';
 import "../mystyles.css";
 
 const CartItems = ({ cart,loadUser, deleteItem }) => {
-    const {_id, menuId, quantity} = cart
+    const {cartId, cartName, cartCost, quantity} = cart
     const deleteIt = () => {
         loadUser();
 
-        deleteItem({_id})
+        deleteItem({cartId})
     }
 
     function validateText(str)
@@ -33,13 +33,14 @@ const CartItems = ({ cart,loadUser, deleteItem }) => {
                         <div class="card-content" >
                         <div class = "row" >
                         <div class="col s3">
-                        {menuId.image&&(validateText(menuId.image)?<img src={menuId.image} alt="" class="responsive-img"  style = {{height:"12vh", width:"10vw"}}/>:
-                        <img src={logo} alt="" class="responsive-img"  style = {{height:"12vh", width:"10vw"}}/>)}
+                        {/* {menuId.image&&(validateText(menuId.image)?<img src={menuId.image} alt="" class="responsive-img"  style = {{height:"12vh", width:"10vw"}}/>: */}
+                        <img src={logo} alt="" class="responsive-img"  style = {{height:"12vh", width:"10vw"}}/>
+                        {/* )} */}
                         
                             
                                         </div>
                         <div class="col s3">
-                        <span><h5 className = "value1" >{menuId.cost}</h5></span>
+                        <span><h5 className = "value1" >{cartCost}</h5></span>
 
                         </div>
                         <div class="col s3" >
@@ -65,7 +66,7 @@ const CartItems = ({ cart,loadUser, deleteItem }) => {
 
                         </div>
                         </div>
-                        <p className = "name1">{menuId.name}</p>
+                        <p className = "name1">{cartName}</p>
                         </div>
                     </div>
                 {/* </div> */}

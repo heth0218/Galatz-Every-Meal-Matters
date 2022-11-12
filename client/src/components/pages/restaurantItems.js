@@ -9,15 +9,15 @@ import logo from '../../../../client/src/yelp_logo.png'
 import M from 'materialize-css/dist/js/materialize.min.js';
 
 const restaurantItems = ({ user, restaurant, setRestaurant, deleteRestaurant }) => {
-    const { _id, name, contact, email, starRating, image, isAvailable } = restaurant
+    const { restaurantId, name, contact, email, starRating, image, isAvailable } = restaurant
 
     const getARestaurant = () => {
-        setRestaurant(_id);
+        setRestaurant(restaurantId);
     }
 
     const deleteRest = () => {
         
-        deleteRestaurant(_id)
+        deleteRestaurant(restaurantId)
         M.toast({ html: `${name} is successfully deleted ` })
     }
 
@@ -61,7 +61,7 @@ const restaurantItems = ({ user, restaurant, setRestaurant, deleteRestaurant }) 
                         {/* <a onClick={getARestaurant}>Go To Restaurant</a> */}
                         <h5 className='navlist' onClick={getARestaurant}><Link to="/restaurant">Go To Restaurant</Link></h5>
                     </div>
-                    {user && user.roles[0] === 'admin' && <a href="#!" className="secondary-content name2" onClick={deleteRest}>
+                    {user && user.roles === 'admin' && <a href="#!" className="secondary-content name2" onClick={deleteRest}>
                         Delete this restaurant:&nbsp;&nbsp;&nbsp;&nbsp; <i className="material-icons red-text">delete</i>
                     </a>}
 

@@ -38,10 +38,11 @@ export const loginUser = (user) => async dispatch => {
                 'Content-Type': 'application/json'
             }
         }
+        // console.log(user)
 
         const res = await axios.post('/api/users/login', user, config)
 
-        console.log(res)
+        console.log(res.data)
         dispatch({
             type: LOGIN_USER,
             payload: res.data
@@ -68,8 +69,8 @@ export const updateUser = (item) => async dispatch => {
                 'Content-Type': 'application/json'
             }
         }
-        const { _id } = item
-        const user = await axios.put(`/api/users/${_id}`, item, config);
+        const { userId } = item
+        const user = await axios.put(`/api/users/${userId}`, item, config);
         console.log(user)
         dispatch({
             type: UPDATE_USER,

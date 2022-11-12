@@ -27,8 +27,8 @@ const AddMenu = ({ addMenuItem, loadUser }) => {
         console.log(name, cost, image, description)
         e.preventDefault();
         const menu = {
-            restaurant: localStorage.restaurant,
-            name, cost, image, description
+            
+            name, cost, image, description,restaurant: localStorage.restaurant
         }
         addMenuItem(menu);
         history.push('/restaurant')

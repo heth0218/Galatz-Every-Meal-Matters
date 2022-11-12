@@ -1,4 +1,4 @@
-import { GET_RESTAURANTS, RESTAURANT_ERROR, GET_RESTAURANT, SET_RESTAURANT, ADD_RESTAURANT, DELETE_CART, DELETE_RESTAURANT, ADD_MENU, ADD_MENUITEM, DELETE_MENU } from './types';
+import { GET_RESTAURANTS, RESTAURANT_ERROR,SEARCH_RESTAURANT, GET_RESTAURANT, SET_RESTAURANT, SEARCH_RESTAURANT_2, ADD_RESTAURANT, DELETE_CART, DELETE_RESTAURANT, ADD_MENU, ADD_MENUITEM, DELETE_MENU } from './types';
 import axios from 'axios'
 
 export const getRestaurants = () => async dispatch => {
@@ -40,12 +40,67 @@ export const getRestaurant = () => async dispatch => {
     }
 }
 
-export const setRestaurant = (id) => {
-    return {
-        type: SET_RESTAURANT,
-        payload: id
+export const searchRestaurant = (query) => async dispatch => {
+    try {
+        console.log("jenish", query)
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        var d = JSON.stringify({
+            "search": query,
+          });
+        const restaurant = await axios.post('/api/restaurant/hello/search', d, config);
+        console.log(restaurant.data)
+
+        // console.log(restaurant, menu);
+        dispatch({
+            type: SEARCH_RESTAURANT,
+            payload: { restaurant: restaurant.data }
+        })
+
+    } catch (error) {
+        dispatch({
+            type: RESTAURANT_ERROR,
+            payload: error.response.statusText
+        })
     }
 }
+
+export const setRestaurant = (restaurantId) => {
+    console.log(restaurantId)
+    return {
+        type: SET_RESTAURANT,
+        payload: restaurantId
+    }
+}
+
+export const searchRestaurant2 = (description, avgCost) => async dispatch => {
+    try{
+    // console.log(restaurantId)
+    var data = JSON.stringify({
+        "description": description,
+        "avgCost": avgCost
+      });
+      
+      const config = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+    const rest = await axios.post('/api/restaurant/filter', data, config)
+    console.log(rest.data)
+    dispatch({
+        type: SEARCH_RESTAURANT_2,
+        payload: rest.data
+    })
+    }catch(err) {
+        console.log(err);
+    }
+}
+
+
 
 
 export const addRestaurant = (restaurant) => async dispatch => {
@@ -61,7 +116,7 @@ export const addRestaurant = (restaurant) => async dispatch => {
         console.log(rest);
         dispatch({
             type: ADD_RESTAURANT,
-            payload: rest.data.restaurant
+            payload: rest.data
         })
     } catch (error) {
         dispatch({
@@ -99,9 +154,12 @@ export const addMenuItem = (menuItem) => async dispatch => {
         }
         const menu = await axios.post('/api/menu/', menuItem, config);
         console.log(menu, "menu");
+
+        const menuList=await axios.get(`/api/menu/${menuItem.restaurant}`)
+        console.log(menuList.data)
         dispatch({
             type: ADD_MENUITEM,
-            payload: menu.data
+            payload: menuList.data.menus
         })
 
     } catch (error) {

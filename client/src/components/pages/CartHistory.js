@@ -3,13 +3,15 @@ import PropTypes from "prop-types"
 import { connect } from "react-redux"
 import CartHistItems from "./CartHistItems"
 import { loadUser } from "../../actions/userActions"
+import {getCartHistory} from '../../actions/cartActions'
 import "../mystyles.css";
 
-const CartHistory = ({ user: { user, isAuthenticated }, loadUser }) => {
+const CartHistory = ({ user: { user, isAuthenticated }, cHistory, loadUser, getCartHistory }) => {
   useEffect(() => {
     if (localStorage.token) {
       loadUser()
     }
+    getCartHistory()
   }, [])
 
   return (
@@ -46,9 +48,9 @@ const CartHistory = ({ user: { user, isAuthenticated }, loadUser }) => {
    </div>
 </div>
    
-    {user &&
-      user.cartHistory.map((cart) => (
-        <CartHistItems item={cart}/>
+    {cHistory &&
+      cHistory.map((cart) => (
+        <CartHistItems item={cart} key={cart.orderId}/>
       ))}
    
     
@@ -74,6 +76,7 @@ CartHistory.propTypes = {
 }
 const mapStateToProps = (state) => ({
   user: state.user,
+  cHistory:state.cart.cartHistory
 })
 
-export default connect(mapStateToProps, { loadUser })(CartHistory)
+export default connect(mapStateToProps, { loadUser, getCartHistory })(CartHistory)

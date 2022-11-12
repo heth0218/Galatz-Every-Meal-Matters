@@ -9,7 +9,7 @@ import logo from '../../../../client/src/yelp_logo.png'
 const MenuItems = ({ user, men, addMenu, isAuthenticated, deleteMenu }) => {
 
     const [quantity, setQuantity] = useState("")
-    const { _id, name, description, cost, availability, image } = men
+    const { menuItemsId, name, description, cost, availability, image } = men
 
     const onChange = e => setQuantity(e.target.value)
 
@@ -20,8 +20,9 @@ const MenuItems = ({ user, men, addMenu, isAuthenticated, deleteMenu }) => {
         else {
             if(quantity>0)
             {
+                console.log(menuItemsId)
                 addMenu({ quantity,
-                    menuId:_id
+                    menuId:menuItemsId, cartName: name, cartCost: cost, restaurantId:localStorage.getItem('restaurant')
                     })
                     M.toast({ html: `${quantity} of ${name} added to your cart` })
             }
@@ -39,7 +40,7 @@ const MenuItems = ({ user, men, addMenu, isAuthenticated, deleteMenu }) => {
 }
 
     const deleteMen = () => {
-        deleteMenu(_id)
+        deleteMenu(menuItemsId)
         M.toast({ html: `Menu Item deleted` })
     }
 
@@ -58,7 +59,7 @@ const MenuItems = ({ user, men, addMenu, isAuthenticated, deleteMenu }) => {
                 <div class="card">
                     <div class="card-image">
                         {image&&(validateText(image)?<img width='100%' height="300vw" src={image} />:<img width='100%' height="300vw" src={logo} />)}
-                        <h4 class="card-title logo">{name}</h4>
+                        <h4 class="card-title logo" style={{color: "black"}}>{name}</h4>
                         <a class="btn-floating halfway-fab waves-effect waves-light red" onClick={addItem}><i class="material-icons">add_shopping_cart</i></a>
                     </div>
                     <div class="card-content ff">
@@ -67,7 +68,7 @@ const MenuItems = ({ user, men, addMenu, isAuthenticated, deleteMenu }) => {
                         <h6> Quantity:<input type="number" min='0' name="quantity" value={quantity} onChange={onChange}></input></h6>
                     </div>
                     <div>
-                        {user && user.roles[0] === 'admin' && <a href="#!" className="secondary-content ff" onClick={deleteMen}>
+                        {user && user.roles === 'admin' && <a href="#!" className="secondary-content ff" onClick={deleteMen}>
                             Delete:&nbsp;&nbsp;&nbsp;&nbsp; <i className="material-icons red-text">delete</i>
                         </a>}
                     </div>
