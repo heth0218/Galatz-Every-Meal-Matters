@@ -1,4 +1,0 @@
-{
-    "mongoURI": "mongodb+srv://Mital_Gala:Hethgala123@cluster0.svwmd.mongodb.net/?retryWrites=true&w=majority",
-    "jwtSecret": "Hethgala"
-}
